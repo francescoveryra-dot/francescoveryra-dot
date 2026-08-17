@@ -21,10 +21,10 @@
 <text x="26" y="37" font-family="'IBM Plex Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="17.5" fill="#b18cff">~</text>
 <text x="44" y="37" font-family="'IBM Plex Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="17.5" fill="#22d3ee">$</text>
 <text x="68" y="37" font-family="'IBM Plex Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="17.5" fill="#8683a8">›</text>
-<clipPath id="clip0"><rect x="108" y="14" height="30" width="0">
+<clipPath id="clip0"><rect x="108" y="14" height="30" width="331.2">
     <animate attributeName="width" values="0;331.2;331.2;0" keyTimes="0;0.26;0.82;1" dur="4.2s" begin="0s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.2 1;0 0 1 1;0.4 0 0.2 1"/>
   </rect></clipPath>
-  <g clip-path="url(#clip0)" opacity="0">
+  <g clip-path="url(#clip0)" opacity="1">
     <animate attributeName="opacity" values="0;1;1;0;0" keyTimes="0;0.02;0.9;0.94;1" dur="16.8s" begin="0s" repeatCount="indefinite"/>
     <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.02;0.9;1" dur="4.2s" begin="0s" repeatCount="indefinite"/>
     <text x="108" y="37" font-family="'IBM Plex Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="17.5" fill="#f4f4fb">AI engineering &amp; agentic systems</text>

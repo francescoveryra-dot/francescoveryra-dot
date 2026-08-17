@@ -91,13 +91,14 @@ export function fieldGradient(width, height) {
  * A pill-shaped layer used by every architecture diagram.
  * `accent` colours the left rule; the label sits in mono, the note in body.
  */
-export function layer({ x, y, width, height, label, note, accent, delay = 0 }) {
+export function layer({ x, y, width, height, label, note, accent }) {
   const noteLine = note
     ? `<text x="${x + 22}" y="${y + height / 2 + 17}" font-family="${font.body}" font-size="12.5" fill="${palette.lumen3}">${escapeText(note)}</text>`
     : "";
   const labelY = note ? y + height / 2 - 3 : y + height / 2 + 5;
-  return `<g opacity="0">
-  <animate attributeName="opacity" from="0" to="1" dur="0.5s" begin="${delay}s" fill="freeze"/>
+  // Layers carry the meaning of the diagram, so they are never animated in:
+  // renderers that ignore SMIL still show the complete architecture.
+  return `<g>
   <rect x="${x}" y="${y}" width="${width}" height="${height}" rx="10" fill="${palette.surface}" fill-opacity="0.55" stroke="${palette.line2}"/>
   <rect x="${x}" y="${y + 10}" width="3" height="${height - 20}" rx="1.5" fill="${accent}"/>
   <text x="${x + 22}" y="${labelY}" font-family="${font.mono}" font-size="13.5" letter-spacing="0.06em" fill="${palette.lumen}">${escapeText(label)}</text>
@@ -110,9 +111,8 @@ export function flow({ x, y1, y2, delay = 0, color = palette.cyan }) {
   return `<g>
   <path d="M${x} ${y1}V${y2}" stroke="${palette.line2}" stroke-width="1.5"/>
   <path d="M${x - 4} ${y2 - 6}L${x} ${y2}L${x + 4} ${y2 - 6}" fill="none" stroke="${palette.line2}" stroke-width="1.5" stroke-linecap="round"/>
-  <circle r="2.6" fill="${color}">
+  <circle cx="${x}" cy="${y1}" r="2.6" fill="${color}" opacity="0">
     <animate attributeName="cy" from="${y1}" to="${y2}" dur="2.4s" begin="${delay}s" repeatCount="indefinite"/>
-    <animate attributeName="cx" values="${x};${x}" dur="2.4s" begin="${delay}s" repeatCount="indefinite"/>
     <animate attributeName="opacity" values="0;1;1;0" dur="2.4s" begin="${delay}s" repeatCount="indefinite"/>
   </circle>
 </g>`;

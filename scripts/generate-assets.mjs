@@ -153,10 +153,14 @@ function focus() {
       const textWidth = n(word.length * charWidth);
       const begin = n(i * step);
       const id = `clip${i}`;
-      return `<clipPath id="${id}"><rect x="${startX}" y="14" height="30" width="0">
+      // The first phrase is fully drawn in the base attributes so a renderer
+      // that ignores SMIL still shows one complete line instead of an empty bar.
+      const restingWidth = i === 0 ? textWidth : 0;
+      const restingOpacity = i === 0 ? 1 : 0;
+      return `<clipPath id="${id}"><rect x="${startX}" y="14" height="30" width="${restingWidth}">
     <animate attributeName="width" values="0;${textWidth};${textWidth};0" keyTimes="0;0.26;0.82;1" dur="${step}s" begin="${begin}s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.2 1;0 0 1 1;0.4 0 0.2 1"/>
   </rect></clipPath>
-  <g clip-path="url(#${id})" opacity="0">
+  <g clip-path="url(#${id})" opacity="${restingOpacity}">
     <animate attributeName="opacity" values="0;1;1;0;0" keyTimes="0;0.02;0.9;0.94;1" dur="${total}s" begin="${begin - i * step}s" repeatCount="indefinite"/>
     <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.02;0.9;1" dur="${step}s" begin="${begin}s" repeatCount="indefinite"/>
     <text x="${startX}" y="37" font-family="${font.mono}" font-size="17.5" fill="${palette.lumen}">${escapeText(word)}</text>

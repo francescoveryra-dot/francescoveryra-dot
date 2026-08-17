@@ -24,101 +24,88 @@
 <g>
   <path d="M450 106V124" stroke="#343963" stroke-width="1.5"/>
   <path d="M446 118L450 124L454 118" fill="none" stroke="#343963" stroke-width="1.5" stroke-linecap="round"/>
-  <circle r="2.6" fill="#22d3ee">
+  <circle cx="450" cy="106" r="2.6" fill="#22d3ee" opacity="0">
     <animate attributeName="cy" from="106" to="124" dur="2.4s" begin="0s" repeatCount="indefinite"/>
-    <animate attributeName="cx" values="450;450" dur="2.4s" begin="0s" repeatCount="indefinite"/>
     <animate attributeName="opacity" values="0;1;1;0" dur="2.4s" begin="0s" repeatCount="indefinite"/>
   </circle>
 </g>
 <g>
   <path d="M450 188V206" stroke="#343963" stroke-width="1.5"/>
   <path d="M446 200L450 206L454 200" fill="none" stroke="#343963" stroke-width="1.5" stroke-linecap="round"/>
-  <circle r="2.6" fill="#22d3ee">
+  <circle cx="450" cy="188" r="2.6" fill="#22d3ee" opacity="0">
     <animate attributeName="cy" from="188" to="206" dur="2.4s" begin="0.3s" repeatCount="indefinite"/>
-    <animate attributeName="cx" values="450;450" dur="2.4s" begin="0.3s" repeatCount="indefinite"/>
     <animate attributeName="opacity" values="0;1;1;0" dur="2.4s" begin="0.3s" repeatCount="indefinite"/>
   </circle>
 </g>
 <g>
   <path d="M450 270V288" stroke="#343963" stroke-width="1.5"/>
   <path d="M446 282L450 288L454 282" fill="none" stroke="#343963" stroke-width="1.5" stroke-linecap="round"/>
-  <circle r="2.6" fill="#b18cff">
+  <circle cx="450" cy="270" r="2.6" fill="#b18cff" opacity="0">
     <animate attributeName="cy" from="270" to="288" dur="2.4s" begin="0.6s" repeatCount="indefinite"/>
-    <animate attributeName="cx" values="450;450" dur="2.4s" begin="0.6s" repeatCount="indefinite"/>
     <animate attributeName="opacity" values="0;1;1;0" dur="2.4s" begin="0.6s" repeatCount="indefinite"/>
   </circle>
 </g>
 <g>
   <path d="M450 352V370" stroke="#343963" stroke-width="1.5"/>
   <path d="M446 364L450 370L454 364" fill="none" stroke="#343963" stroke-width="1.5" stroke-linecap="round"/>
-  <circle r="2.6" fill="#b18cff">
+  <circle cx="450" cy="352" r="2.6" fill="#b18cff" opacity="0">
     <animate attributeName="cy" from="352" to="370" dur="2.4s" begin="0.9s" repeatCount="indefinite"/>
-    <animate attributeName="cx" values="450;450" dur="2.4s" begin="0.9s" repeatCount="indefinite"/>
     <animate attributeName="opacity" values="0;1;1;0" dur="2.4s" begin="0.9s" repeatCount="indefinite"/>
   </circle>
 </g>
 <g>
   <path d="M450 434V452" stroke="#343963" stroke-width="1.5"/>
   <path d="M446 446L450 452L454 446" fill="none" stroke="#343963" stroke-width="1.5" stroke-linecap="round"/>
-  <circle r="2.6" fill="#f272c8">
+  <circle cx="450" cy="434" r="2.6" fill="#f272c8" opacity="0">
     <animate attributeName="cy" from="434" to="452" dur="2.4s" begin="1.2s" repeatCount="indefinite"/>
-    <animate attributeName="cx" values="450;450" dur="2.4s" begin="1.2s" repeatCount="indefinite"/>
     <animate attributeName="opacity" values="0;1;1;0" dur="2.4s" begin="1.2s" repeatCount="indefinite"/>
   </circle>
 </g>
 <g>
   <path d="M450 516V534" stroke="#343963" stroke-width="1.5"/>
   <path d="M446 528L450 534L454 528" fill="none" stroke="#343963" stroke-width="1.5" stroke-linecap="round"/>
-  <circle r="2.6" fill="#f272c8">
+  <circle cx="450" cy="516" r="2.6" fill="#f272c8" opacity="0">
     <animate attributeName="cy" from="516" to="534" dur="2.4s" begin="1.5s" repeatCount="indefinite"/>
-    <animate attributeName="cx" values="450;450" dur="2.4s" begin="1.5s" repeatCount="indefinite"/>
     <animate attributeName="opacity" values="0;1;1;0" dur="2.4s" begin="1.5s" repeatCount="indefinite"/>
   </circle>
 </g>
-<g opacity="0">
-  <animate attributeName="opacity" from="0" to="1" dur="0.5s" begin="0s" fill="freeze"/>
+<g>
   <rect x="90" y="46" width="720" height="56" rx="10" fill="#171a33" fill-opacity="0.55" stroke="#343963"/>
   <rect x="90" y="56" width="3" height="36" rx="1.5" fill="#22d3ee"/>
   <text x="112" y="71" font-family="'IBM Plex Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="13.5" letter-spacing="0.06em" fill="#f4f4fb">USERS &amp; CLIENTS</text>
   <text x="112" y="91" font-family="'Space Grotesk',ui-sans-serif,system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="12.5" fill="#8683a8">Operators, sales teams, technicians, guests, admins</text>
 </g>
-<g opacity="0">
-  <animate attributeName="opacity" from="0" to="1" dur="0.5s" begin="0.12s" fill="freeze"/>
+<g>
   <rect x="90" y="128" width="720" height="56" rx="10" fill="#171a33" fill-opacity="0.55" stroke="#343963"/>
   <rect x="90" y="138" width="3" height="36" rx="1.5" fill="#22d3ee"/>
   <text x="112" y="153" font-family="'IBM Plex Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="13.5" letter-spacing="0.06em" fill="#f4f4fb">FRONTEND</text>
   <text x="112" y="173" font-family="'Space Grotesk',ui-sans-serif,system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="12.5" fill="#8683a8">React · Angular · Next.js · React Native / Capacitor</text>
 </g>
-<g opacity="0">
-  <animate attributeName="opacity" from="0" to="1" dur="0.5s" begin="0.24s" fill="freeze"/>
+<g>
   <rect x="90" y="210" width="720" height="56" rx="10" fill="#171a33" fill-opacity="0.55" stroke="#343963"/>
   <rect x="90" y="220" width="3" height="36" rx="1.5" fill="#b18cff"/>
   <text x="112" y="235" font-family="'IBM Plex Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="13.5" letter-spacing="0.06em" fill="#f4f4fb">API &amp; BACKEND SERVICES</text>
   <text x="112" y="255" font-family="'Space Grotesk',ui-sans-serif,system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="12.5" fill="#8683a8">Laravel · NestJS · Node.js · Python · REST · webhooks</text>
 </g>
-<g opacity="0">
-  <animate attributeName="opacity" from="0" to="1" dur="0.5s" begin="0.36s" fill="freeze"/>
+<g>
   <rect x="90" y="292" width="720" height="56" rx="10" fill="#171a33" fill-opacity="0.55" stroke="#343963"/>
   <rect x="90" y="302" width="3" height="36" rx="1.5" fill="#915eff"/>
   <text x="112" y="317" font-family="'IBM Plex Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="13.5" letter-spacing="0.06em" fill="#f4f4fb">APPLICATION &amp; AGENT ORCHESTRATION</text>
   <text x="112" y="337" font-family="'Space Grotesk',ui-sans-serif,system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="12.5" fill="#8683a8">Domain services, workflows, queues, jobs, tool-using agents</text>
 </g>
-<g opacity="0">
-  <animate attributeName="opacity" from="0" to="1" dur="0.5s" begin="0.48s" fill="freeze"/>
+<g>
   <rect x="90" y="374" width="720" height="56" rx="10" fill="#171a33" fill-opacity="0.55" stroke="#343963"/>
   <rect x="90" y="384" width="3" height="36" rx="1.5" fill="#915eff"/>
   <text x="112" y="399" font-family="'IBM Plex Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="13.5" letter-spacing="0.06em" fill="#f4f4fb">LLM · RAG · ML</text>
   <text x="112" y="419" font-family="'Space Grotesk',ui-sans-serif,system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="12.5" fill="#8683a8">Retrieval, embeddings, document AI, forecasting, fine-tuning</text>
 </g>
-<g opacity="0">
-  <animate attributeName="opacity" from="0" to="1" dur="0.5s" begin="0.6s" fill="freeze"/>
+<g>
   <rect x="90" y="456" width="720" height="56" rx="10" fill="#171a33" fill-opacity="0.55" stroke="#343963"/>
   <rect x="90" y="466" width="3" height="36" rx="1.5" fill="#f272c8"/>
   <text x="112" y="481" font-family="'IBM Plex Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="13.5" letter-spacing="0.06em" fill="#f4f4fb">DATA · VECTOR · STORAGE</text>
   <text x="112" y="501" font-family="'Space Grotesk',ui-sans-serif,system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="12.5" fill="#8683a8">PostgreSQL · MySQL · Prisma · Eloquent · vector stores · files</text>
 </g>
-<g opacity="0">
-  <animate attributeName="opacity" from="0" to="1" dur="0.5s" begin="0.72s" fill="freeze"/>
+<g>
   <rect x="90" y="538" width="720" height="56" rx="10" fill="#171a33" fill-opacity="0.55" stroke="#343963"/>
   <rect x="90" y="548" width="3" height="36" rx="1.5" fill="#ff8a3d"/>
   <text x="112" y="563" font-family="'IBM Plex Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="13.5" letter-spacing="0.06em" fill="#f4f4fb">SECURITY, OBSERVABILITY &amp; DELIVERY</text>
