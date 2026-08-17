@@ -35,24 +35,33 @@ const QUERY = `query($login: String!) {
   }
 }`;
 
-async function fetchProfile() {
+async function fetchProfile({ attempts = 4 } = {}) {
   const token = process.env.GITHUB_TOKEN;
   if (!token) throw new Error("GITHUB_TOKEN is required");
 
-  const response = await fetch("https://api.github.com/graphql", {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${token}`,
-      "Content-Type": "application/json",
-      "User-Agent": "profile-activity-generator",
-    },
-    body: JSON.stringify({ query: QUERY, variables: { login: LOGIN } }),
-  });
+  for (let attempt = 1; ; attempt += 1) {
+    const response = await fetch("https://api.github.com/graphql", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+        "User-Agent": "profile-activity-generator",
+      },
+      body: JSON.stringify({ query: QUERY, variables: { login: LOGIN } }),
+    });
 
-  if (!response.ok) throw new Error(`GitHub API responded ${response.status}`);
-  const payload = await response.json();
-  if (payload.errors?.length) throw new Error(payload.errors.map((e) => e.message).join("; "));
-  return payload.data.user;
+    // The GraphQL endpoint returns 5xx often enough that a single failure
+    // should not fail the weekly refresh.
+    if (response.status >= 500 && attempt < attempts) {
+      await new Promise((resolve) => setTimeout(resolve, attempt * 5000));
+      continue;
+    }
+
+    if (!response.ok) throw new Error(`GitHub API responded ${response.status}`);
+    const payload = await response.json();
+    if (payload.errors?.length) throw new Error(payload.errors.map((e) => e.message).join("; "));
+    return payload.data.user;
+  }
 }
 
 /** 53 weeks of public contributions, drawn as a compact heat strip. */
