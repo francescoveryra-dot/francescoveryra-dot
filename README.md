@@ -36,7 +36,7 @@ these repositories document the architecture, the decisions and the product work
 | **[TemaSuite](https://github.com/francescoveryra-dot/temasuite-showcase)** | Multi-company hospitality SaaS: bookings, Channel Manager, OTA sync, full accounting cycle | Laravel · Angular · PrimeNG · Stripe · MySQL | Full-stack architecture, API, data model, workflows |
 | **[Miele+](https://github.com/francescoveryra-dot/miele-plus-showcase)** | B2B sales platform whose AI agent answers on real data and cites its sources | NestJS · Prisma · React · TanStack Query | Backend modules, AI components, integrations |
 | **[IAF Agent OS](https://github.com/francescoveryra-dot/iaf-agent-os-showcase)** | Control plane that makes AI-assisted development governable across four different IDEs | Agents · skills · policies · deterministic gates | Designed and built independently |
-| **[Athleta](https://github.com/francescoveryra-dot/athleta-showcase)** | Personal AI fitness product where every user owns a queryable knowledge graph | Full-stack · RAG · LLM Wiki | Everything, end to end |
+| **[Athleta](https://github.com/francescoveryra-dot/athleta-showcase)** | Personal AI fitness product where every user owns a queryable knowledge graph | React 19 · Supabase · PostgreSQL · RAG · LLM Wiki | Everything, end to end |
 
 Each case study links back to the interactive version on the
 [portfolio](https://francescoiaforte.vercel.app), where you can walk the real interfaces.
