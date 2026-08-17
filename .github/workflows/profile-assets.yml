@@ -1,0 +1,46 @@
+name: Refresh profile assets
+
+# Regenerates assets/activity.svg from the GitHub API and commits it only when
+# the drawing actually changed, so the history stays free of empty updates.
+
+on:
+  schedule:
+    - cron: "17 5 * * 1" # Monday morning, once a week
+  workflow_dispatch:
+
+# Least privilege: the job writes one file back to this repository and nothing else.
+permissions:
+  contents: write
+
+concurrency:
+  group: profile-assets
+  cancel-in-progress: true
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the profile repository
+        # actions/checkout v7.0.1, pinned to its commit
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+
+      - name: Regenerate the activity card
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PROFILE_LOGIN: ${{ github.repository_owner }}
+        run: node scripts/generate-activity.mjs
+
+      - name: Validate the generated SVG
+        run: node scripts/validate-assets.mjs
+
+      - name: Commit only if something changed
+        run: |
+          if git diff --quiet -- assets; then
+            echo "assets unchanged, nothing to commit"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets
+          git commit -m "chore(assets): refresh public activity card"
+          git push
