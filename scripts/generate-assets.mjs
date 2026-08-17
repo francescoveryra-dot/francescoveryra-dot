@@ -129,9 +129,11 @@ ${columnLabels}
 /* ----------------------------------------------------------------- focus -- */
 
 /**
- * One micro-animation for the whole profile: the disciplines type themselves
- * out in sequence behind a shell prompt. A clip rect does the typing, so there
- * is no per-character markup and no external service.
+ * One micro-animation: disciplines type out behind a shell prompt.
+ *
+ * Every SMIL animation shares the same begin (0) and the same duration (one
+ * full rotation). Repeating a 4.2s clip with a staggered begin made every
+ * phrase restart on top of the others from the second cycle onward.
  */
 function focus() {
   const width = 760;
@@ -143,45 +145,77 @@ function focus() {
     "full-stack product delivery",
     "software architecture at scale",
   ];
+  const count = words.length;
+  const slot = 4.2;
+  const total = n(count * slot);
+  const charWidth = 10.35;
+  const typeIn = 0.28;
+  const hold = 0.82;
 
-  const step = 4.2;
-  const total = n(words.length * step);
-  const charWidth = 10.35; // measured for 17.5px monospace
+  const phrases = words.map((word, i) => {
+    const textWidth = n(word.length * charWidth + 10);
+    return {
+      word,
+      textWidth,
+      id: `clip${i}`,
+      t0: n(i / count),
+      t1: n(i / count + typeIn / count),
+      t2: n(i / count + hold / count),
+      t3: n((i + 1) / count),
+    };
+  });
 
-  const lines = words
-    .map((word, i) => {
-      // A few pixels of slack: fallback fonts are slightly wider than the
-      // metric above and would clip the final character.
-      const textWidth = n(word.length * charWidth + 10);
-      const begin = n(i * step);
-      const id = `clip${i}`;
-      // The first phrase is fully drawn in the base attributes so a renderer
-      // that ignores SMIL still shows one complete line instead of an empty bar.
-      const restingWidth = i === 0 ? textWidth : 0;
-      const restingOpacity = i === 0 ? 1 : 0;
-      return `<clipPath id="${id}"><rect x="${startX}" y="14" height="30" width="${restingWidth}">
-    <animate attributeName="width" values="0;${textWidth};${textWidth};0" keyTimes="0;0.26;0.82;1" dur="${step}s" begin="${begin}s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.2 1;0 0 1 1;0.4 0 0.2 1"/>
-  </rect></clipPath>
-  <g clip-path="url(#${id})" opacity="${restingOpacity}">
-    <animate attributeName="opacity" values="0;1;1;0;0" keyTimes="0;0.02;0.9;0.94;1" dur="${total}s" begin="${begin - i * step}s" repeatCount="indefinite"/>
-    <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.02;0.9;1" dur="${step}s" begin="${begin}s" repeatCount="indefinite"/>
-    <text x="${startX}" y="37" font-family="${font.mono}" font-size="17.5" fill="${palette.lumen}">${escapeText(word)}</text>
-  </g>
-  <rect y="20" width="2" height="20" fill="${palette.cyan}" x="${startX}" opacity="0">
-    <animate attributeName="x" values="${startX};${n(startX + textWidth)};${n(startX + textWidth)};${startX}" keyTimes="0;0.26;0.82;1" dur="${step}s" begin="${begin}s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.2 1;0 0 1 1;0.4 0 0.2 1"/>
-    <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.02;0.94;1" dur="${step}s" begin="${begin}s" repeatCount="indefinite"/>
-  </rect>`;
+  const clipDefs = phrases
+    .map((phrase, i) => {
+      const { id, textWidth, t0, t1, t2, t3 } = phrase;
+      const fallbackWidth = i === 0 ? textWidth : 0;
+      const { keyTimes, values } =
+        i === 0
+          ? { keyTimes: `0;${t1};${t2};${t3};1`, values: `0;${textWidth};${textWidth};0;0` }
+          : i === count - 1
+            ? { keyTimes: `0;${t0};${t1};${t2};1`, values: `0;0;${textWidth};${textWidth};0` }
+            : {
+                keyTimes: `0;${t0};${t1};${t2};${t3};1`,
+                values: `0;0;${textWidth};${textWidth};0;0`,
+              };
+      return `<clipPath id="${id}">
+  <rect x="${startX}" y="14" width="${fallbackWidth}" height="30">
+    <animate attributeName="width" values="${values}" keyTimes="${keyTimes}" dur="${total}s" begin="0s" repeatCount="indefinite"/>
+  </rect>
+</clipPath>`;
     })
-    .join("\n  ");
+    .join("\n");
+
+  const lines = phrases
+    .map(
+      (phrase) => `<text clip-path="url(#${phrase.id})" x="${startX}" y="37" font-family="${font.mono}" font-size="17.5" fill="${palette.lumen}">${escapeText(phrase.word)}</text>`,
+    )
+    .join("\n");
+
+  const cursorTimes = ["0"];
+  const cursorXs = [String(startX)];
+  for (const phrase of phrases) {
+    cursorTimes.push(String(phrase.t1), String(phrase.t2), String(phrase.t3));
+    cursorXs.push(
+      String(n(startX + phrase.textWidth)),
+      String(n(startX + phrase.textWidth)),
+      String(startX),
+    );
+  }
 
   const body = `<defs>
 ${fieldGradient(width, height)}
+${clipDefs}
 </defs>
 <rect width="${width}" height="${height}" rx="10" fill="url(#field)" stroke="${palette.line}"/>
 <text x="26" y="37" font-family="${font.mono}" font-size="17.5" fill="${palette.violet2}">~</text>
 <text x="44" y="37" font-family="${font.mono}" font-size="17.5" fill="${palette.cyan}">$</text>
 <text x="68" y="37" font-family="${font.mono}" font-size="17.5" fill="${palette.lumen3}">›</text>
-${lines}`;
+${lines}
+<rect x="${startX}" y="20" width="2" height="20" fill="${palette.cyan}">
+  <animate attributeName="x" values="${cursorXs.join(";")}" keyTimes="${cursorTimes.join(";")}" dur="${total}s" begin="0s" repeatCount="indefinite"/>
+  <animate attributeName="opacity" values="1;1;0;1" keyTimes="0;0.45;0.5;1" dur="0.9s" begin="0s" repeatCount="indefinite"/>
+</rect>`;
 
   return svg({
     width,
