@@ -32,7 +32,7 @@ these repositories document the architecture, the decisions and the product work
 | System | What it is | Stack | Role |
 |---|---|---|---|
 | **[OptiBuild](https://github.com/francescoveryra-dot/optibuild-showcase)** | Construction-site platform that turns 500+ page quantity surveys into structured, costed work | Laravel · React · Capacitor · Python · MySQL | Architecture, data layer, AI parsing, modules |
-| **[AI Retail Operations](https://github.com/francescoveryra-dot/ai-retail-operations-showcase)** | Food, retail and logistics platform with an AI assistant that performs real operations | Full-stack platform · AI assistant · forecasting | Modules, logistics, AI and forecasting layer |
+| **[AI Retail Operations](https://github.com/francescoveryra-dot/ai-retail-operations-showcase)** | Food, retail and logistics platform with an AI assistant that performs real operations | React · TypeScript · Supabase · PostgreSQL · Capacitor | Modules, logistics, AI and forecasting layer |
 | **[TemaSuite](https://github.com/francescoveryra-dot/temasuite-showcase)** | Multi-company hospitality SaaS: bookings, Channel Manager, OTA sync, full accounting cycle | Laravel · Angular · PrimeNG · Stripe · MySQL | Full-stack architecture, API, data model, workflows |
 | **[Miele+](https://github.com/francescoveryra-dot/miele-plus-showcase)** | B2B sales platform whose AI agent answers on real data and cites its sources | NestJS · Prisma · React · TanStack Query | Backend modules, AI components, integrations |
 | **[IAF Agent OS](https://github.com/francescoveryra-dot/iaf-agent-os-showcase)** | Control plane that makes AI-assisted development governable across four different IDEs | Agents · skills · policies · deterministic gates | Designed and built independently |
