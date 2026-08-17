@@ -55,19 +55,22 @@ business conversation and end as a deployed, monitored, access-controlled module
 ## Engineering domains
 
 **AI & machine learning**  
-RAG pipelines · LLM Wiki · AI agents · multi-agent orchestration · embeddings (BGE-M3, Gemini) ·
-vector databases · hybrid retrieval · LoRA / QLoRA fine-tuning · PyTorch · Hugging Face ·
-ML forecasting · predictive analytics · prompt and context engineering
+*Agentic systems* — AI agents · multi-agent orchestration · LangChain · prompt and context engineering  
+*Retrieval & knowledge* — RAG pipelines · LLM Wiki · embeddings (BGE-M3, Gemini) · vector databases · hybrid retrieval  
+*Models & training* — LoRA / QLoRA fine-tuning · Unsloth · PyTorch · Hugging Face · ML forecasting · predictive analytics
 
 **Backend & APIs**  
 Laravel · NestJS · Node.js · Python · PHP · Java · Spring Boot · C++ · REST · webhooks ·
 queues and workers · background jobs
 
 **Frontend & mobile**  
-React · Next.js · Angular · TypeScript · React Native · Flutter · Capacitor · Tailwind · PrimeNG
+React · Next.js · Angular · TypeScript · JavaScript · React Native · Flutter · Capacitor · Tailwind · PrimeNG
 
 **Data**  
 PostgreSQL · MySQL · MariaDB · Supabase · MongoDB · SQLite · Prisma · Eloquent
+
+**Automation & integration**  
+n8n · API and webhook integrations · scheduled jobs · third-party service orchestration
 
 **Infrastructure & delivery**  
 Linux · SSH · WHM/cPanel · Docker · Kubernetes · Git · Jenkins · OpenShift ·
