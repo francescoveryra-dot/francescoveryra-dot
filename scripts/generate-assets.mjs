@@ -150,7 +150,9 @@ function focus() {
 
   const lines = words
     .map((word, i) => {
-      const textWidth = n(word.length * charWidth);
+      // A few pixels of slack: fallback fonts are slightly wider than the
+      // metric above and would clip the final character.
+      const textWidth = n(word.length * charWidth + 10);
       const begin = n(i * step);
       const id = `clip${i}`;
       // The first phrase is fully drawn in the base attributes so a renderer
