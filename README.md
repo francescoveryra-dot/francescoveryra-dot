@@ -47,39 +47,33 @@ Each case study links back to the interactive version on the
 
 <img src="assets/systems.svg?v=3" alt="Seven layers, top to bottom: users and clients, frontend, API and backend services, application and agent orchestration, LLM/RAG/ML, data/vector/storage, and security, observability and delivery" width="100%">
 
-I work across the full stack, not just one layer. A feature can start from a client
-requirement and reach production with monitoring and access control in place.
+I work across frontend, backend, data and infrastructure. A feature can start
+from a client requirement and reach production with monitoring and access control.
 
 ---
 
-## Engineering toolkit
+## Technologies & tools
 
-Technologies and tools used in professional and personal projects.
-Grouped by area below.
+The same inventory as the [portfolio](https://francescoiaforte.vercel.app), in compact form.
+Project stacks are in the table above. This list is the union of what I work with.
 
-### AI & machine learning
+### AI & ML
 
-Core area. The technologies I use to build AI systems, RAG pipelines, agents and retrieval.
+**Practices**  
+AI agents · RAG pipelines · multi-agent orchestration · prompt engineering · context engineering ·
+fine-tuning · LoRA / QLoRA · hybrid retrieval · ML forecasting · predictive analytics
 
-**Agentic systems**  
-AI agents · multi-agent orchestration · LangChain · LLM Wiki · prompt engineering · context engineering
-
-**Retrieval & knowledge**  
-RAG pipelines · embeddings (BGE-M3, Gemini) · vector databases · hybrid retrieval
-
-**Models & training**  
-LoRA / QLoRA fine-tuning · Unsloth · PyTorch · Hugging Face · OpenAI · Mistral · ML forecasting · predictive analytics
+**Frameworks, libraries & providers**  
+LangChain · LLM Wiki · Unsloth · PyTorch · Hugging Face · OpenAI · Mistral ·
+embeddings (BGE-M3, Gemini) · vector databases
 
 ### Software engineering
-
-Core area. Frontend, backend, data and infrastructure. What I use to take software
-from first design to production.
 
 **Frontend & mobile**  
 React · Next.js · Angular · TypeScript · JavaScript · HTML · CSS · Tailwind · PrimeNG ·
 React Native · Flutter · Capacitor · Xcode · Android Studio
 
-**Backend & application**  
+**Backend**  
 Laravel · NestJS · Node.js · Python · PHP · Java · Spring Boot · C++
 
 **APIs & integrations**  
@@ -87,7 +81,7 @@ REST · webhooks · queues and workers · background jobs · scheduled jobs · c
 third-party service orchestration
 
 **Data**  
-PostgreSQL · MySQL · MariaDB · Supabase · MongoDB · SQLite · Prisma · Eloquent ·
+PostgreSQL · MySQL · MariaDB · MongoDB · SQLite · Supabase · Prisma · Eloquent ·
 SQL · JSON · XML · YAML
 
 **Infrastructure & delivery**  
@@ -100,17 +94,10 @@ environment separation · automated testing · code review · technical document
 
 ### AI-assisted engineering
 
-Coding agents and automation are part of how I work. I use them for implementation,
-review, tests and repetitive tasks, and I keep control of architecture, technical
-choices and code.
+Claude Code · Cursor · Codex · Google Antigravity · n8n · workflow automation, governed by
+<a href="https://github.com/francescoveryra-dot/iaf-agent-os-showcase">IAF Agent OS</a>
 
-Claude Code · Cursor · Codex · Google Antigravity · n8n · workflow automation, governed by the
-control plane in <a href="https://github.com/francescoveryra-dot/iaf-agent-os-showcase">IAF Agent OS</a>
-
-### Additional platforms & tools
-
-Tools used in production at Nexus Trade and on client work. They sit next to the
-engineering profile.
+### Other platforms
 
 **Commerce & payments**  
 Shopify · WordPress · Magento · PrestaShop · Stripe · PayPal · Klarna · RevenueCat
