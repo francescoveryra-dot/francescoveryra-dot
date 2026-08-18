@@ -1,4 +1,4 @@
-<img src="assets/hero.svg" alt="Francesco Iaforte — AI Engineer and Full-Stack Developer" width="100%">
+<img src="assets/hero.svg?v=2" alt="Francesco Iaforte — AI Engineer and Full-Stack Developer" width="100%">
 
 <p align="center">
   <img src="assets/focus.svg?v=3" alt="Focus: AI engineering and agentic systems, RAG and knowledge systems, full-stack product delivery, software architecture at scale" width="100%">
@@ -45,7 +45,7 @@ Each case study links back to the interactive version on the
 
 ## Systems I build
 
-<img src="assets/systems.svg" alt="Seven layers, top to bottom: users and clients, frontend, API and backend services, application and agent orchestration, LLM/RAG/ML, data/vector/storage, and security, observability and delivery" width="100%">
+<img src="assets/systems.svg?v=2" alt="Seven layers, top to bottom: users and clients, frontend, API and backend services, application and agent orchestration, LLM/RAG/ML, data/vector/storage, and security, observability and delivery" width="100%">
 
 I own the whole column, not one band of it. That is the reason a feature can start as a
 business conversation and end as a deployed, monitored, access-controlled module.
@@ -88,7 +88,7 @@ Claude Code, Cursor, Codex and Antigravity, governed by the control plane in
 
 ## Engineering activity
 
-<img src="assets/activity.svg" alt="Public engineering activity card: public repositories, public contributions over twelve months, stars and languages, with a contribution heat strip" width="100%">
+<img src="assets/activity.svg?v=2" alt="Public engineering activity card: public repositories, public contributions over twelve months, stars and languages, with a contribution heat strip" width="100%">
 
 <sub>This card counts <b>public repositories only</b>, and it says so on its face. The platforms
 above are private client and product repositories, so no public metric can represent the real
