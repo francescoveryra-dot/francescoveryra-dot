@@ -1,7 +1,7 @@
 <img src="assets/hero.svg?v=2" alt="Francesco Iaforte — AI Engineer and Full-Stack Developer" width="100%">
 
 <p align="center">
-  <img src="assets/focus.svg?v=3" alt="Focus: AI engineering and agentic systems, RAG and knowledge systems, full-stack product delivery, software architecture at scale" width="100%">
+  <img src="assets/focus.svg?v=4" alt="Focus: AI engineering and agentic systems, RAG and knowledge systems, full-stack product delivery, software architecture at scale" width="100%">
 </p>
 
 <p align="center">
