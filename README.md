@@ -63,35 +63,48 @@ Project stacks are in the table above. This list is the union of what I work wit
 
 ### AI & ML
 
-**Practices**  
-AI agents · RAG pipelines · multi-agent orchestration · prompt engineering · context engineering ·
-fine-tuning · LoRA / QLoRA · hybrid retrieval · ML forecasting · predictive analytics ·
-tool calling · voice agents
+**AI systems & agents**  
+Practices: AI agents · RAG pipelines · multi-agent orchestration · prompt engineering · context engineering · tool calling · voice agents  
+Frameworks: LangChain · LangGraph
 
-**Frameworks, libraries & providers**  
-LangChain · LLM Wiki · Unsloth · PyTorch · Hugging Face · OpenAI · Mistral ·
-embeddings (BGE-M3, Gemini) · vector databases · Apify · OpenAPI Company
+**Retrieval & knowledge**  
+Practices: hybrid retrieval · embeddings  
+Knowledge base: LLM Wiki · Obsidian · Graphify  
+Infrastructure: vector databases
+
+**Models & training**  
+Fine-tuning · LoRA · QLoRA · PyTorch · Hugging Face · Unsloth
+
+**AI platforms & APIs**  
+Cloud AI: Vertex AI · Amazon Bedrock  
+Model APIs: OpenAI · Mistral  
+Tooling: Google AI Studio
+
+**ML & analytics**  
+ML forecasting · predictive analytics
 
 ### Software engineering
 
 **Frontend & mobile**  
-React · Next.js · Angular · TypeScript · JavaScript · HTML · CSS · Tailwind · PrimeNG ·
-React Native · Flutter · Capacitor · Xcode · Android Studio
+Frameworks: React · React Native · Next.js · Angular · Flutter · Tailwind · PrimeNG · Capacitor  
+Languages: TypeScript · JavaScript · HTML · CSS  
+Tooling: Xcode · Android Studio
 
 **Backend**  
-Laravel · NestJS · Node.js · Python · PHP · Java · Spring Boot · C++
+Runtimes / frameworks: Node.js · NestJS · Laravel · Spring Boot  
+Languages: Python · PHP · Java · C++
 
-**APIs & integrations**  
-REST · webhooks · queues and workers · BullMQ · background jobs · scheduled jobs · cron ·
-third-party service orchestration · OpenAPI Company · Apify
+**APIs, integrations & jobs**  
+REST · webhooks · queues and workers · BullMQ · cron · Apify
 
 **Data**  
 PostgreSQL · Redis · MySQL · MariaDB · MongoDB · SQLite · Supabase · Prisma · Eloquent ·
 SQL · JSON · XML · YAML
 
-**Infrastructure & delivery**  
-Linux · SSH · WHM/cPanel · Docker · Kubernetes · Git · GitHub · Jenkins · OpenShift ·
-multi-environment deploy · SSL · backups · server migrations
+**Cloud, infrastructure & delivery**  
+Cloud: Google Cloud Platform (GCP) · Docker · Kubernetes · OpenShift · Linux  
+Delivery: Git · GitHub · Jenkins · SSH · WHM/cPanel · SSL · backups · server migrations ·
+multi-environment deploy
 
 **Security & practices**  
 Role-based access control · row-level security · audit trails · secrets handling ·
