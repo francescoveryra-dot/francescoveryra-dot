@@ -41,10 +41,10 @@
 <text x="22" y="40" font-family="'IBM Plex Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="18" fill="#b18cff">~</text>
 <text x="40" y="40" font-family="'IBM Plex Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="18" fill="#22d3ee">$</text>
 <text x="58" y="40" font-family="'IBM Plex Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="18" fill="#8683a8">›</text>
-<text clip-path="url(#clip0)" x="78" y="40" font-family="'IBM Plex Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="18" fill="#f4f4fb">AI engineering &amp; agentic systems</text>
-<text clip-path="url(#clip1)" x="78" y="40" font-family="'IBM Plex Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="18" fill="#f4f4fb">RAG and knowledge systems</text>
-<text clip-path="url(#clip2)" x="78" y="40" font-family="'IBM Plex Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="18" fill="#f4f4fb">full-stack product delivery</text>
-<text clip-path="url(#clip3)" x="78" y="40" font-family="'IBM Plex Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="18" fill="#f4f4fb">software architecture at scale</text>
+<text clip-path="url(#clip0)" x="78" y="40" font-family="'IBM Plex Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="18" textLength="345.6" lengthAdjust="spacing" fill="#f4f4fb">AI engineering &amp; agentic systems</text>
+<text clip-path="url(#clip1)" x="78" y="40" font-family="'IBM Plex Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="18" textLength="270" lengthAdjust="spacing" fill="#f4f4fb">RAG and knowledge systems</text>
+<text clip-path="url(#clip2)" x="78" y="40" font-family="'IBM Plex Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="18" textLength="291.6" lengthAdjust="spacing" fill="#f4f4fb">full-stack product delivery</text>
+<text clip-path="url(#clip3)" x="78" y="40" font-family="'IBM Plex Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="18" textLength="324" lengthAdjust="spacing" fill="#f4f4fb">software architecture at scale</text>
 <rect x="78" y="23" width="2" height="21" fill="#22d3ee">
   <animate attributeName="x" values="78;433.6;433.6;78;358;358;78;379.6;379.6;78;412;412;78" keyTimes="0;0.07;0.21;0.25;0.32;0.45;0.5;0.57;0.71;0.75;0.82;0.96;1" dur="16.8s" begin="0s" repeatCount="indefinite"/>
   <animate attributeName="opacity" values="1;1;0;1" keyTimes="0;0.45;0.5;1" dur="0.9s" begin="0s" repeatCount="indefinite"/>

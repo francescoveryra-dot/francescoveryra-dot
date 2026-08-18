@@ -160,6 +160,14 @@ function focus() {
 
   const phrases = words.map((word, i) => ({
     word,
+    // Every geometry below is derived from this number, so the text is forced
+    // to it with `textLength` rather than trusted to happen to match. The mono
+    // stack resolves to a different face on every platform — IBM Plex Mono is
+    // not installed on any of them — and the natural widths drift by up to
+    // 10px between engines, which is enough for the mask to shave the last
+    // character and drop the caret inside the word on one device while looking
+    // right on another.
+    laidWidth: n(word.length * charWidth),
     // The clip is the typewriter: a rect that grows from nothing to the width
     // of the line, revealing it a character at a time.
     textWidth: n(word.length * charWidth + 10),
@@ -197,7 +205,7 @@ function focus() {
   const lines = phrases
     .map(
       (phrase) =>
-        `<text clip-path="url(#${phrase.id})" x="${startX}" y="40" font-family="${font.mono}" font-size="18" fill="${palette.lumen}">${escapeText(phrase.word)}</text>`,
+        `<text clip-path="url(#${phrase.id})" x="${startX}" y="40" font-family="${font.mono}" font-size="18" textLength="${phrase.laidWidth}" lengthAdjust="spacing" fill="${palette.lumen}">${escapeText(phrase.word)}</text>`,
     )
     .join("\n");
 
