@@ -1,7 +1,7 @@
-<img src="assets/hero.svg?v=2" alt="Francesco Iaforte — AI Engineer and Full-Stack Developer" width="100%">
+<img src="assets/hero.svg?v=3" alt="Francesco Iaforte — AI Engineer and Full-Stack Developer" width="100%">
 
 <p align="center">
-  <img src="assets/focus.svg?v=5" alt="Focus: AI engineering and agentic systems, RAG and knowledge systems, full-stack product delivery, software architecture at scale" width="100%">
+  <img src="assets/focus.svg?v=6" alt="Focus: AI engineering and agentic systems, RAG and knowledge systems, full-stack product delivery, software architecture at scale" width="100%">
 </p>
 
 <p align="center">
@@ -45,7 +45,7 @@ Each case study links back to the interactive version on the
 
 ## Systems I build
 
-<img src="assets/systems.svg?v=2" alt="Seven layers, top to bottom: users and clients, frontend, API and backend services, application and agent orchestration, LLM/RAG/ML, data/vector/storage, and security, observability and delivery" width="100%">
+<img src="assets/systems.svg?v=3" alt="Seven layers, top to bottom: users and clients, frontend, API and backend services, application and agent orchestration, LLM/RAG/ML, data/vector/storage, and security, observability and delivery" width="100%">
 
 I own the whole column, not one band of it. That is the reason a feature can start as a
 business conversation and end as a deployed, monitored, access-controlled module.

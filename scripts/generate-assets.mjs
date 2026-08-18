@@ -158,78 +158,70 @@ function focus() {
   const typeIn = 0.28;
   const hold = 0.82;
 
+  // Stop 1.5px short of the edge so the shutter never paints over the border.
+  const shutterEnd = n(width - 1.5);
+
   const phrases = words.map((word, i) => ({
     word,
     // Every geometry below is derived from this number, so the text is forced
     // to it with `textLength` rather than trusted to happen to match. The mono
     // stack resolves to a different face on every platform — IBM Plex Mono is
     // not installed on any of them — and the natural widths drift by up to
-    // 10px between engines, which is enough for the mask to shave the last
-    // character and drop the caret inside the word on one device while looking
-    // right on another.
+    // 10px between engines, which is enough to leave the caret inside the word
+    // on one device while looking right on another.
     laidWidth: n(word.length * charWidth),
-    // The clip is the typewriter: a rect that grows from nothing to the width
-    // of the line, revealing it a character at a time.
-    textWidth: n(word.length * charWidth + 10),
-    id: `clip${i}`,
-    t0: n(i / count),
     t1: n(i / count + typeIn / count),
     t2: n(i / count + hold / count),
     t3: n((i + 1) / count),
   }));
 
-  const clipDefs = phrases
+  // One phrase is lit at a time. This is also the whole of the fallback: a
+  // renderer that drops the animation still paints exactly one line, because
+  // the other three carry a static `opacity="0"`.
+  const slotTimes = Array.from({ length: count + 1 }, (_, i) => n(i / count)).join(";");
+  const lines = phrases
     .map((phrase, i) => {
-      const { id, textWidth, t0, t1, t2, t3 } = phrase;
-      // Static width for a renderer that ignores SMIL: the first line is fully
-      // revealed, the rest stay clipped to nothing. Without this the four
-      // phrases would print on top of one another.
-      const fallbackWidth = i === 0 ? textWidth : 0;
-      const { keyTimes, values } =
-        i === 0
-          ? { keyTimes: `0;${t1};${t2};${t3};1`, values: `0;${textWidth};${textWidth};0;0` }
-          : i === count - 1
-            ? { keyTimes: `0;${t0};${t1};${t2};1`, values: `0;0;${textWidth};${textWidth};0` }
-            : {
-                keyTimes: `0;${t0};${t1};${t2};${t3};1`,
-                values: `0;0;${textWidth};${textWidth};0;0`,
-              };
-      return `<clipPath id="${id}">
-  <rect x="${startX}" y="16" width="${fallbackWidth}" height="32">
-    <animate attributeName="width" values="${values}" keyTimes="${keyTimes}" dur="${total}s" begin="0s" repeatCount="indefinite"/>
-  </rect>
-</clipPath>`;
+      const values = Array.from({ length: count + 1 }, (_, slot) =>
+        slot === i || (slot === count && i === 0) ? 1 : 0,
+      ).join(";");
+      return `<text x="${startX}" y="40" font-family="${font.mono}" font-size="18" textLength="${phrase.laidWidth}" lengthAdjust="spacing" fill="${palette.lumen}" opacity="${i === 0 ? 1 : 0}">${escapeText(phrase.word)}
+  <animate attributeName="opacity" values="${values}" keyTimes="${slotTimes}" calcMode="discrete" dur="${total}s" begin="0s" repeatCount="indefinite"/>
+</text>`;
     })
     .join("\n");
 
-  const lines = phrases
-    .map(
-      (phrase) =>
-        `<text clip-path="url(#${phrase.id})" x="${startX}" y="40" font-family="${font.mono}" font-size="18" textLength="${phrase.laidWidth}" lengthAdjust="spacing" fill="${palette.lumen}">${escapeText(phrase.word)}</text>`,
-    )
-    .join("\n");
-
-  // The caret rides the end of whatever is being typed, then snaps back to the
-  // prompt when the line clears.
-  const cursorTimes = ["0"];
-  const cursorXs = [String(startX)];
+  // The reveal used to be a clipPath. GitHub's mobile reader drops `clip-path`
+  // while still running SMIL, so all four lines printed on top of each other
+  // there. This does the same job with a plain rectangle: a shutter in the
+  // panel's own gradient, parked over the line and sliding right to uncover it
+  // a character at a time. The caret rides its leading edge and snaps back to
+  // the prompt when the line clears.
+  const times = ["0"];
+  const edges = [startX];
   for (const phrase of phrases) {
-    cursorTimes.push(String(phrase.t1), String(phrase.t2), String(phrase.t3));
-    const end = n(startX + phrase.textWidth);
-    cursorXs.push(String(end), String(end), String(startX));
+    times.push(String(phrase.t1), String(phrase.t2), String(phrase.t3));
+    const end = n(startX + phrase.laidWidth);
+    edges.push(end, end, startX);
   }
+  const shutterX = edges.join(";");
+  const shutterW = edges.map((edge) => n(shutterEnd - edge)).join(";");
+  const caretX = edges.map((edge) => n(edge + 4)).join(";");
+  const keyTimes = times.join(";");
 
   const body = `<defs>
 ${fieldGradient(width, height)}
-${clipDefs}
 </defs>
 <rect width="${width}" height="${height}" rx="10" fill="url(#field)" stroke="${palette.line}"/>
 <text x="22" y="40" font-family="${font.mono}" font-size="18" fill="${palette.violet2}">~</text>
 <text x="40" y="40" font-family="${font.mono}" font-size="18" fill="${palette.cyan}">$</text>
 <text x="58" y="40" font-family="${font.mono}" font-size="18" fill="${palette.lumen3}">›</text>
 ${lines}
-<rect x="${startX}" y="23" width="2" height="21" fill="${palette.cyan}">
-  <animate attributeName="x" values="${cursorXs.join(";")}" keyTimes="${cursorTimes.join(";")}" dur="${total}s" begin="0s" repeatCount="indefinite"/>
+<rect x="${shutterEnd}" y="14" width="0" height="34" fill="url(#field)">
+  <animate attributeName="x" values="${shutterX}" keyTimes="${keyTimes}" dur="${total}s" begin="0s" repeatCount="indefinite"/>
+  <animate attributeName="width" values="${shutterW}" keyTimes="${keyTimes}" dur="${total}s" begin="0s" repeatCount="indefinite"/>
+</rect>
+<rect x="${n(startX + phrases[0].laidWidth + 4)}" y="23" width="2" height="21" fill="${palette.cyan}">
+  <animate attributeName="x" values="${caretX}" keyTimes="${keyTimes}" dur="${total}s" begin="0s" repeatCount="indefinite"/>
   <animate attributeName="opacity" values="1;1;0;1" keyTimes="0;0.45;0.5;1" dur="0.9s" begin="0s" repeatCount="indefinite"/>
 </rect>`;
 

@@ -89,7 +89,10 @@ export function backdrop(width, height, { grid = 44 } = {}) {
 }
 
 export function fieldGradient(width, height) {
-  return `<linearGradient id="field" x1="0" y1="0" x2="1" y2="1">
+  // User space, not the default bounding box: every banner fills the canvas
+  // with it, and stating it in canvas coordinates lets a second shape sample
+  // the identical ramp and disappear into the panel.
+  return `<linearGradient id="field" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="${width}" y2="${height}">
   <stop offset="0" stop-color="${palette.void}"/>
   <stop offset="0.55" stop-color="${palette.space}"/>
   <stop offset="1" stop-color="${palette.space2}"/>
