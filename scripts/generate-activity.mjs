@@ -14,7 +14,7 @@
 import { mkdirSync, writeFileSync } from "node:fs";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
-import { backdrop, escapeText, fieldGradient, font, n, palette, svg } from "./lib/svg.mjs";
+import { CANVAS, backdrop, escapeText, fieldGradient, font, n, palette, svg } from "./lib/svg.mjs";
 
 const LOGIN = process.env.PROFILE_LOGIN ?? "francescoveryra-dot";
 const out = resolve(dirname(fileURLToPath(import.meta.url)), "..", "assets");
@@ -84,16 +84,16 @@ function heatStrip(weeks, { x, y, cell = 9, gap = 3 }) {
 
 function tile({ x, y, width, value, label, accent }) {
   return `<g>
-  <rect x="${x}" y="${y}" width="${width}" height="76" rx="10" fill="${palette.surface}" fill-opacity="0.55" stroke="${palette.line2}"/>
-  <rect x="${x}" y="${y + 14}" width="3" height="48" rx="1.5" fill="${accent}"/>
-  <text x="${x + 20}" y="${y + 38}" font-family="${font.display}" font-size="25" font-weight="700" fill="${palette.lumen}">${escapeText(value)}</text>
-  <text x="${x + 20}" y="${y + 60}" font-family="${font.mono}" font-size="10.5" letter-spacing="0.09em" fill="${palette.lumen3}">${escapeText(label.toUpperCase())}</text>
+  <rect x="${x}" y="${y}" width="${width}" height="84" rx="10" fill="${palette.surface}" fill-opacity="0.55" stroke="${palette.line2}"/>
+  <rect x="${x}" y="${y + 15}" width="3" height="54" rx="1.5" fill="${accent}"/>
+  <text x="${x + 20}" y="${y + 42}" font-family="${font.display}" font-size="30" font-weight="700" fill="${palette.lumen}">${escapeText(value)}</text>
+  <text x="${x + 20}" y="${y + 66}" font-family="${font.mono}" font-size="14" letter-spacing="0.06em" fill="${palette.lumen3}">${escapeText(label.toUpperCase())}</text>
 </g>`;
 }
 
 function card(user) {
-  const width = 900;
-  const height = 300;
+  const width = CANVAS;
+  const height = 400;
   const repos = user.repositories.nodes;
   const calendar = user.contributionsCollection.contributionCalendar;
   const weeks = calendar.weeks.slice(-53);
@@ -107,22 +107,37 @@ function card(user) {
     { value: String(languages.length), label: "languages in public", accent: palette.amber },
   ];
 
-  const tileWidth = 192;
+  // Two by two rather than four across: on the narrow canvas a quarter-width
+  // tile cannot hold its own caption, and a caption too small to read is not
+  // a statistic, it is texture.
+  const tilesX = 36;
   const tileGap = 16;
-  const tilesX = 40;
+  const tileWidth = n((width - tilesX * 2 - tileGap) / 2);
+  const cell = 9;
+  const heatGap = n((width - tilesX * 2 - 53 * cell) / 52);
 
   const body = `<defs>
 ${fieldGradient(width, height)}
 </defs>
-${backdrop(width, height, { grid: 50 })}
-<text x="40" y="36" font-family="${font.mono}" font-size="12" letter-spacing="0.22em" fill="${palette.lumen3}">ENGINEERING ACTIVITY</text>
-${tiles.map((t, i) => tile({ ...t, x: tilesX + i * (tileWidth + tileGap), y: 56, width: tileWidth })).join("\n")}
+${backdrop(width, height, { grid: 40 })}
+<text x="36" y="36" font-family="${font.mono}" font-size="16" letter-spacing="0.18em" fill="${palette.lumen3}">ENGINEERING ACTIVITY</text>
+${tiles
+  .map((t, i) =>
+    tile({
+      ...t,
+      x: tilesX + (i % 2) * (tileWidth + tileGap),
+      y: 58 + Math.floor(i / 2) * (84 + tileGap),
+      width: tileWidth,
+    }),
+  )
+  .join("\n")}
 <g>
-${heatStrip(weeks, { x: 40, y: 158 })}
+${heatStrip(weeks, { x: tilesX, y: 258, cell, gap: heatGap })}
 </g>
-<text x="40" y="255" font-family="${font.mono}" font-size="11" fill="${palette.lumen3}">Public repositories only. The platforms I build professionally live in private repositories,</text>
-<text x="40" y="272" font-family="${font.mono}" font-size="11" fill="${palette.lumen3}">so these numbers describe open work, not total output.</text>
-<text x="${width - 40}" y="272" text-anchor="end" font-family="${font.mono}" font-size="10" fill="${palette.line2}">updated ${new Date().toISOString().slice(0, 10)}</text>`;
+<text x="36" y="352" font-family="${font.mono}" font-size="14" fill="${palette.lumen3}">Public repositories only. What I build</text>
+<text x="36" y="370" font-family="${font.mono}" font-size="14" fill="${palette.lumen3}">professionally lives in private ones, so these</text>
+<text x="36" y="388" font-family="${font.mono}" font-size="14" fill="${palette.lumen3}">numbers describe open work, not total output.</text>
+<text x="${width - 36}" y="388" text-anchor="end" font-family="${font.mono}" font-size="12" fill="${palette.line2}">${new Date().toISOString().slice(0, 10)}</text>`;
 
   return svg({
     width,

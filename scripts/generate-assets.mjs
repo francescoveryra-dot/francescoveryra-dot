@@ -9,6 +9,7 @@ import { mkdirSync, writeFileSync } from "node:fs";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import {
+  CANVAS,
   backdrop,
   escapeText,
   fieldGradient,
@@ -30,17 +31,17 @@ const out = resolve(dirname(fileURLToPath(import.meta.url)), "..", "assets");
  * (no SMIL) is already a complete picture.
  */
 function hero() {
-  const width = 1160;
-  const height = 320;
+  const width = CANVAS;
+  const height = 300;
   const columns = [
-    { x: 792, count: 2, accent: palette.cyan },
-    { x: 890, count: 4, accent: palette.violet2 },
-    { x: 988, count: 3, accent: palette.violet },
-    { x: 1086, count: 2, accent: palette.magenta },
+    { x: 436, count: 2, accent: palette.cyan },
+    { x: 490, count: 4, accent: palette.violet2 },
+    { x: 544, count: 3, accent: palette.violet },
+    { x: 598, count: 2, accent: palette.magenta },
   ];
 
-  const midY = 168;
-  const spread = 34;
+  const midY = 150;
+  const spread = 30;
   const nodes = columns.map(({ x, count, accent }) => {
     const top = midY - ((count - 1) * spread) / 2;
     return {
@@ -84,37 +85,34 @@ function hero() {
     )
     .join("\n");
 
-  const columnLabels = ["input", "agents", "systems", "delivery"]
-    .map(
-      (label, i) =>
-        `<text x="${columns[i].x}" y="277" text-anchor="middle" font-family="${font.mono}" font-size="10.5" letter-spacing="0.14em" fill="${palette.lumen3}">${label.toUpperCase()}</text>`,
-    )
-    .join("\n");
-
+  // The per-column captions are gone. Four of them across 220px of canvas were
+  // unreadable on a laptop and invisible on a phone; the topology reads as a
+  // topology without them, and <desc> still names the four stages for anyone
+  // who cannot see it at all.
   const body = `<defs>
 ${fieldGradient(width, height)}
 </defs>
-${backdrop(width, height)}
-<ellipse cx="940" cy="168" rx="230" ry="150" fill="url(#halo)"/>
+${backdrop(width, height, { grid: 40 })}
+<ellipse cx="520" cy="150" rx="180" ry="130" fill="url(#halo)"/>
 
 <g>
-  <rect x="56" y="58" width="34" height="3" rx="1.5" fill="url(#rim)"/>
-  <text x="100" y="64" font-family="${font.mono}" font-size="12.5" letter-spacing="0.20em" fill="${palette.cyan}">AI ENGINEER · FULL-STACK DEVELOPER</text>
+  <rect x="40" y="52" width="26" height="3" rx="1.5" fill="url(#rim)"/>
+  <text x="76" y="58" font-family="${font.mono}" font-size="17" letter-spacing="0.12em" fill="${palette.cyan}">AI ENGINEER · FULL-STACK</text>
 
-  <text x="56" y="132" font-family="${font.display}" font-size="49" font-weight="700" letter-spacing="0.01em" fill="${palette.lumen}">FRANCESCO</text>
-  <text x="56" y="186" font-family="${font.display}" font-size="49" font-weight="700" letter-spacing="0.01em" fill="url(#rim)">IAFORTE</text>
+  <text x="40" y="118" font-family="${font.display}" font-size="44" font-weight="700" letter-spacing="0.01em" fill="${palette.lumen}">FRANCESCO</text>
+  <text x="40" y="164" font-family="${font.display}" font-size="44" font-weight="700" letter-spacing="0.01em" fill="url(#rim)">IAFORTE</text>
 
-  <text x="56" y="228" font-size="17" fill="${palette.lumen2}">I design and ship complete AI-native and full-stack systems,</text>
-  <text x="56" y="252" font-size="17" fill="${palette.lumen2}">from architecture to production.</text>
+  <text x="40" y="202" font-size="20" fill="${palette.lumen2}">I design and ship complete</text>
+  <text x="40" y="228" font-size="20" fill="${palette.lumen2}">AI-native and full-stack systems,</text>
+  <text x="40" y="254" font-size="20" fill="${palette.lumen2}">from architecture to production.</text>
 
-  <text x="56" y="285" font-family="${font.mono}" font-size="11.5" letter-spacing="0.08em" fill="${palette.lumen3}">NAPOLI, ITALIA — SOFTWARE ENGINEERING &amp; APPLIED AI</text>
+  <text x="40" y="280" font-family="${font.mono}" font-size="15" letter-spacing="0.08em" fill="${palette.lumen3}">NAPOLI, ITALIA — APPLIED AI</text>
 </g>
 
 <g>
 ${edges.join("\n")}
 ${dots}
 ${packets.join("\n")}
-${columnLabels}
 </g>`;
 
   return svg({
@@ -129,16 +127,24 @@ ${columnLabels}
 /* ----------------------------------------------------------------- focus -- */
 
 /**
- * One micro-animation: disciplines type out behind a shell prompt.
+ * One micro-animation: disciplines cycle behind a shell prompt.
  *
- * Every SMIL animation shares the same begin (0) and the same duration (one
- * full rotation). Repeating a 4.2s clip with a staggered begin made every
- * phrase restart on top of the others from the second cycle onward.
+ * This used to type each phrase out by animating the width of a `clipPath`
+ * rect. It looked right on a desktop browser and broke on phones and tablets:
+ * where a renderer ignores `clip-path` on `<text>`, nothing is clipped, and
+ * all four phrases paint on top of each other into an unreadable smear. That
+ * is exactly what a reader saw on the GitHub mobile view.
+ *
+ * So the reveal is now per-phrase `opacity`, stepped with `calcMode="discrete"`
+ * — the most boring animation SMIL has, and one that cannot fail into overlap:
+ * the phrases after the first are written at `opacity="0"`, so a renderer that
+ * runs no animation at all shows one clean line instead of four stacked ones.
+ * The cursor steps between phrase ends the same way.
  */
 function focus() {
-  const width = 760;
-  const height = 58;
-  const startX = 108;
+  const width = 500;
+  const height = 62;
+  const startX = 78;
   const words = [
     "AI engineering & agentic systems",
     "RAG and knowledge systems",
@@ -146,74 +152,38 @@ function focus() {
     "software architecture at scale",
   ];
   const count = words.length;
-  const slot = 4.2;
-  const total = n(count * slot);
-  const charWidth = 10.35;
-  const typeIn = 0.28;
-  const hold = 0.82;
+  const total = n(count * 4.2);
+  const charWidth = 10.8;
+  const keyTimes = Array.from({ length: count + 1 }, (_, i) => n(i / count)).join(";");
 
-  const phrases = words.map((word, i) => {
-    const textWidth = n(word.length * charWidth + 10);
-    return {
-      word,
-      textWidth,
-      id: `clip${i}`,
-      t0: n(i / count),
-      t1: n(i / count + typeIn / count),
-      t2: n(i / count + hold / count),
-      t3: n((i + 1) / count),
-    };
-  });
-
-  const clipDefs = phrases
-    .map((phrase, i) => {
-      const { id, textWidth, t0, t1, t2, t3 } = phrase;
-      const fallbackWidth = i === 0 ? textWidth : 0;
-      const { keyTimes, values } =
-        i === 0
-          ? { keyTimes: `0;${t1};${t2};${t3};1`, values: `0;${textWidth};${textWidth};0;0` }
-          : i === count - 1
-            ? { keyTimes: `0;${t0};${t1};${t2};1`, values: `0;0;${textWidth};${textWidth};0` }
-            : {
-                keyTimes: `0;${t0};${t1};${t2};${t3};1`,
-                values: `0;0;${textWidth};${textWidth};0;0`,
-              };
-      return `<clipPath id="${id}">
-  <rect x="${startX}" y="14" width="${fallbackWidth}" height="30">
-    <animate attributeName="width" values="${values}" keyTimes="${keyTimes}" dur="${total}s" begin="0s" repeatCount="indefinite"/>
-  </rect>
-</clipPath>`;
+  const lines = words
+    .map((word, i) => {
+      // Discrete keeps each phrase fully on for its slot and fully off
+      // otherwise; the trailing value returns the cycle to its start.
+      const values = Array.from({ length: count + 1 }, (_, slot) =>
+        slot === i || (slot === count && i === 0) ? 1 : 0,
+      ).join(";");
+      return `<text x="${startX}" y="40" font-family="${font.mono}" font-size="18" fill="${palette.lumen}" opacity="${i === 0 ? 1 : 0}">${escapeText(word)}
+  <animate attributeName="opacity" values="${values}" keyTimes="${keyTimes}" calcMode="discrete" dur="${total}s" begin="0s" repeatCount="indefinite"/>
+</text>`;
     })
     .join("\n");
 
-  const lines = phrases
-    .map(
-      (phrase) => `<text clip-path="url(#${phrase.id})" x="${startX}" y="37" font-family="${font.mono}" font-size="17.5" fill="${palette.lumen}">${escapeText(phrase.word)}</text>`,
-    )
-    .join("\n");
-
-  const cursorTimes = ["0"];
-  const cursorXs = [String(startX)];
-  for (const phrase of phrases) {
-    cursorTimes.push(String(phrase.t1), String(phrase.t2), String(phrase.t3));
-    cursorXs.push(
-      String(n(startX + phrase.textWidth)),
-      String(n(startX + phrase.textWidth)),
-      String(startX),
-    );
-  }
+  const cursorXs = words
+    .map((word) => n(startX + word.length * charWidth + 4))
+    .concat(n(startX + words[0].length * charWidth + 4))
+    .join(";");
 
   const body = `<defs>
 ${fieldGradient(width, height)}
-${clipDefs}
 </defs>
 <rect width="${width}" height="${height}" rx="10" fill="url(#field)" stroke="${palette.line}"/>
-<text x="26" y="37" font-family="${font.mono}" font-size="17.5" fill="${palette.violet2}">~</text>
-<text x="44" y="37" font-family="${font.mono}" font-size="17.5" fill="${palette.cyan}">$</text>
-<text x="68" y="37" font-family="${font.mono}" font-size="17.5" fill="${palette.lumen3}">›</text>
+<text x="22" y="40" font-family="${font.mono}" font-size="18" fill="${palette.violet2}">~</text>
+<text x="40" y="40" font-family="${font.mono}" font-size="18" fill="${palette.cyan}">$</text>
+<text x="58" y="40" font-family="${font.mono}" font-size="18" fill="${palette.lumen3}">›</text>
 ${lines}
-<rect x="${startX}" y="20" width="2" height="20" fill="${palette.cyan}">
-  <animate attributeName="x" values="${cursorXs.join(";")}" keyTimes="${cursorTimes.join(";")}" dur="${total}s" begin="0s" repeatCount="indefinite"/>
+<rect x="${n(startX + words[0].length * charWidth + 4)}" y="23" width="2" height="21" fill="${palette.cyan}">
+  <animate attributeName="x" values="${cursorXs}" keyTimes="${keyTimes}" calcMode="discrete" dur="${total}s" begin="0s" repeatCount="indefinite"/>
   <animate attributeName="opacity" values="1;1;0;1" keyTimes="0;0.45;0.5;1" dur="0.9s" begin="0s" repeatCount="indefinite"/>
 </rect>`;
 
@@ -221,7 +191,7 @@ ${lines}
     width,
     height,
     title: "What I focus on",
-    desc: `A shell prompt typing out, in turn: ${words.join("; ")}.`,
+    desc: `A shell prompt cycling through, in turn: ${words.join("; ")}.`,
     body,
   });
 }
@@ -230,23 +200,27 @@ ${lines}
 
 /** The end-to-end slice Francesco actually owns, top to bottom. */
 function systems() {
-  const width = 900;
+  const width = CANVAS;
+  // Notes are kept under about 62 characters: that is what fits the box at a
+  // note size which survives the phone downscale. A longer, truer-sounding
+  // line that renders as a grey smudge is worth less than a shorter one that
+  // can be read.
   const rows = [
     { label: "USERS & CLIENTS", note: "Operators, sales teams, technicians, guests, admins", accent: palette.cyan },
     { label: "FRONTEND", note: "React · Angular · Next.js · React Native / Capacitor", accent: palette.cyan },
     { label: "API & BACKEND SERVICES", note: "Laravel · NestJS · Node.js · Python · REST · webhooks", accent: palette.violet2 },
     { label: "APPLICATION & AGENT ORCHESTRATION", note: "Domain services, workflows, queues, jobs, tool-using agents", accent: palette.violet },
     { label: "LLM · RAG · ML", note: "Retrieval, embeddings, document AI, forecasting, fine-tuning", accent: palette.violet },
-    { label: "DATA · VECTOR · STORAGE", note: "PostgreSQL · MySQL · Prisma · Eloquent · vector stores · files", accent: palette.magenta },
-    { label: "SECURITY, OBSERVABILITY & DELIVERY", note: "RBAC · audit trail · secrets · logs · CI · multi-environment deploy", accent: palette.amber },
+    { label: "DATA · VECTOR · STORAGE", note: "PostgreSQL · MySQL · Prisma · vector stores · files", accent: palette.magenta },
+    { label: "SECURITY, OBSERVABILITY & DELIVERY", note: "RBAC · audit trail · secrets · logs · CI · multi-env deploy", accent: palette.amber },
   ];
 
-  const boxX = 90;
+  const boxX = 36;
   const boxW = width - boxX * 2;
-  const boxH = 56;
-  const gap = 26;
-  const top = 46;
-  const height = top + rows.length * boxH + (rows.length - 1) * gap + 42;
+  const boxH = 78;
+  const gap = 22;
+  const top = 52;
+  const height = top + rows.length * boxH + (rows.length - 1) * gap + 40;
 
   const blocks = rows
     .map((row, i) =>
@@ -279,8 +253,8 @@ function systems() {
   const body = `<defs>
 ${fieldGradient(width, height)}
 </defs>
-${backdrop(width, height, { grid: 50 })}
-<text x="${width / 2}" y="30" text-anchor="middle" font-family="${font.mono}" font-size="12" letter-spacing="0.22em" fill="${palette.lumen3}">SYSTEMS I BUILD</text>
+${backdrop(width, height, { grid: 40 })}
+<text x="${width / 2}" y="33" text-anchor="middle" font-family="${font.mono}" font-size="16" letter-spacing="0.18em" fill="${palette.lumen3}">SYSTEMS I BUILD</text>
 ${arrows}
 ${blocks}`;
 

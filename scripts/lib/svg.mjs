@@ -10,6 +10,24 @@
  * animation is unavailable.
  */
 
+/**
+ * Every asset is drawn on this width.
+ *
+ * GitHub gives a README about 830px on a laptop and about 355px on a phone,
+ * and an `<img width="100%">` scales the whole drawing to fit. A banner drawn
+ * 1160 wide is therefore shown at 0.31 on a phone, which turned 12px captions
+ * into 4px smears — the desktop view was fine and the phone view was mush.
+ *
+ * Drawing on a narrow canvas inverts that: the phone scale is about 0.55, the
+ * laptop scales *up* (vectors, so it stays sharp), and one type scale serves
+ * both. The cost is that there is genuinely less room per line, which is the
+ * honest constraint a phone imposes anyway.
+ */
+export const CANVAS = 640;
+
+/** Type that still reads at CANVAS scaled to phone width: 19 lands near 10.5px. */
+export const MIN_TYPE = 19;
+
 export const palette = {
   void: "#05060f",
   space: "#080a17",
@@ -93,15 +111,15 @@ export function fieldGradient(width, height) {
  */
 export function layer({ x, y, width, height, label, note, accent }) {
   const noteLine = note
-    ? `<text x="${x + 22}" y="${y + height / 2 + 17}" font-family="${font.body}" font-size="12.5" fill="${palette.lumen3}">${escapeText(note)}</text>`
+    ? `<text x="${x + 22}" y="${y + height / 2 + 20}" font-family="${font.body}" font-size="16" fill="${palette.lumen3}">${escapeText(note)}</text>`
     : "";
-  const labelY = note ? y + height / 2 - 3 : y + height / 2 + 5;
+  const labelY = note ? y + height / 2 - 5 : y + height / 2 + 6;
   // Layers carry the meaning of the diagram, so they are never animated in:
   // renderers that ignore SMIL still show the complete architecture.
   return `<g>
   <rect x="${x}" y="${y}" width="${width}" height="${height}" rx="10" fill="${palette.surface}" fill-opacity="0.55" stroke="${palette.line2}"/>
   <rect x="${x}" y="${y + 10}" width="3" height="${height - 20}" rx="1.5" fill="${accent}"/>
-  <text x="${x + 22}" y="${labelY}" font-family="${font.mono}" font-size="13.5" letter-spacing="0.06em" fill="${palette.lumen}">${escapeText(label)}</text>
+  <text x="${x + 22}" y="${labelY}" font-family="${font.mono}" font-size="18" letter-spacing="0.05em" fill="${palette.lumen}">${escapeText(label)}</text>
   ${noteLine}
 </g>`;
 }
