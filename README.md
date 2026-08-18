@@ -22,6 +22,10 @@ business process before writing code.
 
 Currently AI Engineer & Full-Stack Developer at **InnovEdge**, Naples.
 
+The AI work is counted from shipped systems, not from a skill list: **4** product
+AI agents, **2** RAG / LLM Wiki systems, and **5** models fine-tuned for specific
+tasks.
+
 ---
 
 ## Selected systems
