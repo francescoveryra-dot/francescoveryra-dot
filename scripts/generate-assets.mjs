@@ -245,12 +245,12 @@ function systems() {
   // can be read.
   const rows = [
     { label: "USERS & CLIENTS", note: "Operators, sales teams, technicians, guests, admins", accent: palette.cyan },
-    { label: "FRONTEND", note: "React · Angular · Next.js · React Native / Capacitor", accent: palette.cyan },
-    { label: "API & BACKEND SERVICES", note: "Laravel · NestJS · Node.js · Python · REST · webhooks", accent: palette.violet2 },
+    { label: "FRONTEND", note: "Web apps, dashboards, mobile apps, embedded software", accent: palette.cyan },
+    { label: "API & BACKEND SERVICES", note: "APIs, business logic, auth, integrations, async jobs", accent: palette.violet2 },
     { label: "APPLICATION & AGENT ORCHESTRATION", note: "Domain services, workflows, queues, jobs, tool-using agents", accent: palette.violet },
     { label: "LLM · RAG · ML", note: "Retrieval, embeddings, document AI, forecasting, fine-tuning", accent: palette.violet },
-    { label: "DATA · VECTOR · STORAGE", note: "PostgreSQL · MySQL · Prisma · vector stores · files", accent: palette.magenta },
-    { label: "SECURITY, OBSERVABILITY & DELIVERY", note: "RBAC · audit trail · secrets · logs · CI · multi-env deploy", accent: palette.amber },
+    { label: "DATA · VECTOR · STORAGE", note: "Modeling, relational/document DBs, RLS, ORM, vector stores", accent: palette.magenta },
+    { label: "SECURITY, OBSERVABILITY & DELIVERY", note: "Access control, backups, SSL, CI/CD, multi-env deploy", accent: palette.amber },
   ];
 
   const boxX = 36;

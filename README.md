@@ -45,10 +45,9 @@ Each case study links back to the interactive version on the
 
 ## Systems I build
 
-<img src="assets/systems.svg?v=3" alt="Seven layers, top to bottom: users and clients, frontend, API and backend services, application and agent orchestration, LLM/RAG/ML, data/vector/storage, and security, observability and delivery" width="100%">
+<img src="assets/systems.svg?v=4" alt="Seven layers, top to bottom: users and clients, frontend, API and backend services, application and agent orchestration, LLM/RAG/ML, data/vector/storage, and security, observability and delivery" width="100%">
 
-I work across frontend, backend, data and infrastructure. A feature can start
-from a client requirement and reach production with monitoring and access control.
+The diagram is what I build. The inventory below is what I use to build it.
 
 ---
 
