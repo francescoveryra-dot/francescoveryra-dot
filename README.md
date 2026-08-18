@@ -61,74 +61,96 @@ The diagram is the architecture I ship. The list below is the inventory.
 The same inventory as the [portfolio](https://francescoiaforte.vercel.app), in compact form.
 Project stacks are in the table above. This list is the union of what I work with.
 
-### AI & ML
+### AI & Machine Learning
 
-**AI systems & agents**  
-Practices: AI agents · RAG pipelines · multi-agent orchestration · prompt engineering · context engineering · tool calling · voice agents  
-Frameworks: LangChain · LangGraph
+#### AI Systems & Agents
 
-**Retrieval & knowledge**  
-Practices: hybrid retrieval · embeddings  
-Knowledge base: LLM Wiki · Obsidian · Graphify  
-Infrastructure: vector databases
+**Practices:** AI Agents · RAG Pipelines · Multi-Agent Orchestration · Prompt Engineering · Context Engineering · Tool Calling · Voice Agents  
+**Frameworks:** LangChain · LangGraph
 
-**Models & training**  
-Fine-tuning · LoRA · QLoRA · PyTorch · Hugging Face · Unsloth
+#### Retrieval & Knowledge
 
-**AI platforms & APIs**  
-Cloud AI: Vertex AI · Amazon Bedrock  
-Model APIs: OpenAI · Mistral  
-Tooling: Google AI Studio
+**Practices:** Hybrid Retrieval · Embeddings  
+**Knowledge base:** LLM Wiki · Obsidian · Graphify  
+**Infrastructure:** Vector DB
 
-**ML & analytics**  
-ML forecasting · predictive analytics
+#### Models & Training
 
-### Software engineering
+**Practices:** Fine-Tuning  
+**Techniques:** LoRA · QLoRA  
+**Libraries:** PyTorch · Hugging Face · Unsloth
 
-**Frontend & mobile**  
-Frameworks: React · React Native · Next.js · Angular · Flutter · Tailwind · PrimeNG · Capacitor  
-Languages: TypeScript · JavaScript · HTML · CSS  
-Tooling: Xcode · Android Studio
+#### ML & Analytics
 
-**Backend**  
-Runtimes / frameworks: Node.js · NestJS · Laravel · Spring Boot  
-Languages: Python · PHP · Java · C++
+ML Forecasting · Predictive Analytics
 
-**APIs, integrations & jobs**  
-REST · webhooks · queues and workers · BullMQ · cron · Apify
+#### AI Platforms & APIs
 
-**Data**  
-PostgreSQL · Redis · MySQL · MariaDB · MongoDB · SQLite · Supabase · Prisma · Eloquent ·
-SQL · JSON · XML · YAML
+**Cloud AI:** Vertex AI · Amazon Bedrock  
+**Model APIs:** OpenAI · Mistral  
+**Tooling:** Google AI Studio
 
-**Cloud, infrastructure & delivery**  
-Cloud: Google Cloud Platform (GCP) · Docker · Kubernetes · OpenShift · Linux  
-Delivery: Git · GitHub · Jenkins · SSH · WHM/cPanel · SSL · backups · server migrations ·
-multi-environment deploy
+### Software Engineering
 
-**Security & practices**  
-Role-based access control · row-level security · audit trails · secrets handling ·
-environment separation · automated testing · code review · technical documentation
+#### Frontend & Mobile
 
-### AI-assisted engineering
+**Frameworks:** React · React Native · Next.js · Angular · Flutter · Tailwind · PrimeNG · CapacitorJS  
+**Languages:** TypeScript · JavaScript · HTML · CSS  
+**Tooling:** Xcode · Android Studio
 
-Claude Code · Cursor · Codex · Google Antigravity · n8n · workflow automation, governed by
-<a href="https://github.com/francescoveryra-dot/iaf-agent-os-showcase">IAF Agent OS</a>
+#### Backend & Application
 
-### Other platforms
+**Runtimes and frameworks:** Node.js · NestJS · Laravel · Spring Boot  
+**Languages:** Python · PHP · Java · C++
 
-**Commerce & payments**  
-Shopify · WordPress · Magento · PrestaShop · Stripe · PayPal · Klarna · RevenueCat
+#### APIs, Integrations & Jobs
 
-**Growth & analytics**  
-GA4 · CRO · Meta Ads · Google Ads · TikTok Ads · LinkedIn Ads · Klaviyo (email & SMS)
+**APIs & integrations:** REST API · Webhook  
+**Async & scheduling:** Queue / Worker · BullMQ · Cron  
+**Data acquisition:** Apify
 
-**Content & creative AI**  
+#### Data & Databases
+
+**Databases:** PostgreSQL · Redis · MySQL · MariaDB · MongoDB · SQLite  
+**ORM & platforms:** Supabase · Prisma · Eloquent  
+**Formats:** SQL · JSON · XML · YAML
+
+#### Cloud, Infrastructure & Delivery
+
+**Cloud & infrastructure:** Google Cloud Platform (GCP) · Docker · Kubernetes · OpenShift · Linux  
+**Delivery:** Git · GitHub · Jenkins · SSH · WHM / cPanel · SSL · Backups · Server migrations · Multi-environment deploy
+
+#### Security & practices
+
+Role-based access control · row-level security · audit trails · secrets handling · environment separation · automated testing · code review · technical documentation
+
+### AI-Assisted Engineering
+
+#### Coding Agents & Automation
+
+**Coding agents:** Claude Code · Cursor · Codex · Google Antigravity  
+**Automation:** n8n · Workflow Automation
+
+Governed by <a href="https://github.com/francescoveryra-dot/iaf-agent-os-showcase">IAF Agent OS</a>.
+
+### Complementary Experience
+
+#### Commerce & Payments
+
+**Platforms:** Shopify · WordPress · Magento · PrestaShop  
+**Payments:** Stripe · PayPal · Klarna · RevenueCat
+
+#### Growth & Analytics
+
+GA4 · CRO · Meta Ads · Google Ads · TikTok Ads · LinkedIn Ads · Klaviyo (Email & SMS)
+
+#### Content & Creative AI
+
 Canva · CapCut · HeyGen · Higgsfield · Rask.ai · ElevenLabs
 
-**Cross-functional**  
-Requirements and feasibility analysis · client and stakeholder communication ·
-technical-functional documentation · priority management · project coordination
+### Cross-Functional Skills
+
+Requirements and feasibility analysis · client and stakeholder communication · technical-functional documentation · problem solving · priority management · team working · autonomy · project coordination
 
 ---
 
