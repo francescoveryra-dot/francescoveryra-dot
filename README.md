@@ -15,10 +15,10 @@
 
 I build software systems that go into production and stay there.
 
-Over the last years I have shipped management platforms, multi-company SaaS, AI agents and
-document-intelligence pipelines end to end — architecture, data model, backend, frontend,
-integrations, security and deployment. My background is management engineering, so I read the
-business process before I write the code, and the systems below are shaped by that.
+In recent years I've shipped management platforms, multi-company SaaS, AI agents and
+document-intelligence pipelines: architecture, data model, backend, frontend,
+integrations, security and deployment. I studied management engineering, so I read the
+business process before writing code.
 
 Currently AI Engineer & Full-Stack Developer at **InnovEdge**, Naples.
 
@@ -47,20 +47,19 @@ Each case study links back to the interactive version on the
 
 <img src="assets/systems.svg?v=3" alt="Seven layers, top to bottom: users and clients, frontend, API and backend services, application and agent orchestration, LLM/RAG/ML, data/vector/storage, and security, observability and delivery" width="100%">
 
-I own the whole column, not one band of it. That is the reason a feature can start as a
-business conversation and end as a deployed, monitored, access-controlled module.
+I work across the full stack, not just one layer. A feature can start from a client
+requirement and reach production with monitoring and access control in place.
 
 ---
 
 ## Engineering toolkit
 
-Technologies, frameworks and tools used across professional and personal projects.
-Grouped by what they are for, not ranked by level — the depth is in the systems
-above, which you can open and read.
+Technologies and tools used in professional and personal projects.
+Grouped by area below.
 
 ### AI & machine learning
 
-Core area. What the AI systems above are built out of.
+Core area. The technologies I use to build AI systems, RAG pipelines, agents and retrieval.
 
 **Agentic systems**  
 AI agents · multi-agent orchestration · LangChain · LLM Wiki · prompt engineering · context engineering
@@ -73,8 +72,8 @@ LoRA / QLoRA fine-tuning · Unsloth · PyTorch · Hugging Face · OpenAI · Mist
 
 ### Software engineering
 
-Core area. Frontend, backend, data and infrastructure — the whole column, which is
-why a feature can start as a business conversation and end as a deployed module.
+Core area. Frontend, backend, data and infrastructure. What I use to take software
+from first design to production.
 
 **Frontend & mobile**  
 React · Next.js · Angular · TypeScript · JavaScript · HTML · CSS · Tailwind · PrimeNG ·
@@ -101,17 +100,17 @@ environment separation · automated testing · code review · technical document
 
 ### AI-assisted engineering
 
-How the work gets done, not who does it. Coding agents and automation run inside
-architecture, implementation, review, testing and delivery — the decisions, the
-reviews and the code stay mine.
+Coding agents and automation are part of how I work. I use them for implementation,
+review, tests and repetitive tasks, and I keep control of architecture, technical
+choices and code.
 
 Claude Code · Cursor · Codex · Google Antigravity · n8n · workflow automation, governed by the
 control plane in <a href="https://github.com/francescoveryra-dot/iaf-agent-os-showcase">IAF Agent OS</a>
 
 ### Additional platforms & tools
 
-Alongside the engineering profile, not part of its center: used in production
-running Nexus Trade and client work.
+Tools used in production at Nexus Trade and on client work. They sit next to the
+engineering profile.
 
 **Commerce & payments**  
 Shopify · WordPress · Magento · PrestaShop · Stripe · PayPal · Klarna · RevenueCat
@@ -132,10 +131,9 @@ technical-functional documentation · priority management · project coordinatio
 
 <img src="assets/activity.svg?v=2" alt="Public engineering activity card: public repositories, public contributions over twelve months, stars and languages, with a contribution heat strip" width="100%">
 
-<sub>This card counts <b>public repositories only</b>, and it says so on its face. The platforms
-above are private client and product repositories, so no public metric can represent the real
-volume of the work. The contribution calendar directly below on this profile is the honest
-place to look.</sub>
+<sub>This card counts <b>public repositories only</b>. The platforms above are private
+client and product repositories, so public metrics don't reflect the full volume of
+work. For recent activity, check the contribution calendar on this profile.</sub>
 
 ---
 
