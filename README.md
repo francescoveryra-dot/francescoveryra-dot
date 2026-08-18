@@ -30,8 +30,8 @@ tasks.
 
 ## Selected systems
 
-Seven systems, each with its own engineering case study. The source code stays private —
-where a public repository exists, it documents the architecture, the decisions and the product work.
+Seven systems, each with its own engineering case study. Source is private. The public
+repositories document architecture, decisions and product work.
 
 | System | What it is | Stack | Role |
 |---|---|---|---|
@@ -52,7 +52,7 @@ Each case study links back to the interactive version on the
 
 <img src="assets/systems.svg?v=4" alt="Seven layers, top to bottom: users and clients, frontend, API and backend services, application and agent orchestration, LLM/RAG/ML, data/vector/storage, and security, observability and delivery" width="100%">
 
-The diagram is what I build. The inventory below is what I use to build it.
+The diagram is the architecture I ship. The list below is the inventory.
 
 ---
 
