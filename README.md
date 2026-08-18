@@ -13,12 +13,15 @@
 
 ---
 
-I build software systems that go into production and stay there.
+I ship software that goes into production and stays there.
 
-In recent years I've shipped management platforms, multi-company SaaS, AI agents and
-document-intelligence pipelines: architecture, data model, backend, frontend,
-integrations, security and deployment. I studied management engineering, so I read the
-business process before writing code.
+Management platforms, multi-company SaaS, APIs and automations: architecture,
+data model, backend, frontend, integrations, security and deploy. On the AI side:
+RAG and knowledge-base systems, agents with tool calling and multi-agent
+orchestration, fine-tuning pipelines using LoRA and QLoRA.
+
+I studied management engineering, so I read the business process before writing
+code.
 
 Currently AI Engineer & Full-Stack Developer at **InnovEdge**, Naples.
 
