@@ -22,7 +22,7 @@ business process before writing code.
 
 Currently AI Engineer & Full-Stack Developer at **InnovEdge**, Naples.
 
-The AI work is counted from shipped systems, not from a skill list: **4** product
+The AI work is counted from shipped systems, not from a skill list: **5** product
 AI agents, **2** RAG / LLM Wiki systems, and **5** models fine-tuned for specific
 tasks.
 
@@ -30,11 +30,12 @@ tasks.
 
 ## Selected systems
 
-Six systems, each with its own engineering case study. The source code stays private —
-these repositories document the architecture, the decisions and the product work.
+Seven systems, each with its own engineering case study. The source code stays private —
+where a public repository exists, it documents the architecture, the decisions and the product work.
 
 | System | What it is | Stack | Role |
 |---|---|---|---|
+| **[AI Operations Hub](https://francescoiaforte.vercel.app/en/projects/ai-operations-hub)** | Production B2B operations layer: company acquisition, source-aware enrichment, operational CRM and an AI voice agent with backend tool calling | OpenAPI Company · Apify · ElevenLabs Agents · CRM | Architecture, prospecting, provenance, voice, adapters |
 | **[OptiBuild](https://github.com/francescoveryra-dot/optibuild-showcase)** | Construction-site platform that turns 500+ page quantity surveys into structured, costed work | Laravel · React · Capacitor · Python · MySQL | Architecture, data layer, AI parsing, modules |
 | **[AI Retail Operations](https://github.com/francescoveryra-dot/ai-retail-operations-showcase)** | Food, retail and logistics platform with an AI assistant that performs real operations | React · TypeScript · Supabase · PostgreSQL · Capacitor | Modules, logistics, AI and forecasting layer |
 | **[TemaSuite](https://github.com/francescoveryra-dot/temasuite-showcase)** | Multi-company hospitality SaaS: bookings, Channel Manager, OTA sync, full accounting cycle | Laravel · Angular · PrimeNG · Stripe · MySQL | Full-stack architecture, API, data model, workflows |
@@ -64,11 +65,12 @@ Project stacks are in the table above. This list is the union of what I work wit
 
 **Practices**  
 AI agents · RAG pipelines · multi-agent orchestration · prompt engineering · context engineering ·
-fine-tuning · LoRA / QLoRA · hybrid retrieval · ML forecasting · predictive analytics
+fine-tuning · LoRA / QLoRA · hybrid retrieval · ML forecasting · predictive analytics ·
+tool calling · voice agents
 
 **Frameworks, libraries & providers**  
 LangChain · LLM Wiki · Unsloth · PyTorch · Hugging Face · OpenAI · Mistral ·
-embeddings (BGE-M3, Gemini) · vector databases
+embeddings (BGE-M3, Gemini) · vector databases · Apify · OpenAPI Company
 
 ### Software engineering
 
@@ -81,7 +83,7 @@ Laravel · NestJS · Node.js · Python · PHP · Java · Spring Boot · C++
 
 **APIs & integrations**  
 REST · webhooks · queues and workers · background jobs · scheduled jobs · cron ·
-third-party service orchestration
+third-party service orchestration · OpenAPI Company · Apify
 
 **Data**  
 PostgreSQL · MySQL · MariaDB · MongoDB · SQLite · Supabase · Prisma · Eloquent ·
