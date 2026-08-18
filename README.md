@@ -35,7 +35,7 @@ where a public repository exists, it documents the architecture, the decisions a
 
 | System | What it is | Stack | Role |
 |---|---|---|---|
-| **[AI Operations Hub](https://francescoiaforte.vercel.app/en/projects/ai-operations-hub)** | Production B2B operations layer: company acquisition, source-aware enrichment, operational CRM and an AI voice agent with backend tool calling | OpenAPI Company · Apify · ElevenLabs Agents · CRM | Architecture, prospecting, provenance, voice, adapters |
+| **[AI Operations Hub](https://github.com/francescoveryra-dot/ai-operations-hub-showcase)** | Production B2B operations platform combining company acquisition, source-aware enrichment, operational CRM and AI voice operations | React · TypeScript · NestJS · PostgreSQL · Redis · BullMQ · ElevenLabs Agents · Apify · OpenAPI Company · REST APIs · Webhooks · Docker | Architecture, prospecting, provenance, voice, adapters |
 | **[OptiBuild](https://github.com/francescoveryra-dot/optibuild-showcase)** | Construction-site platform that turns 500+ page quantity surveys into structured, costed work | Laravel · React · Capacitor · Python · MySQL | Architecture, data layer, AI parsing, modules |
 | **[AI Retail Operations](https://github.com/francescoveryra-dot/ai-retail-operations-showcase)** | Food, retail and logistics platform with an AI assistant that performs real operations | React · TypeScript · Supabase · PostgreSQL · Capacitor | Modules, logistics, AI and forecasting layer |
 | **[TemaSuite](https://github.com/francescoveryra-dot/temasuite-showcase)** | Multi-company hospitality SaaS: bookings, Channel Manager, OTA sync, full accounting cycle | Laravel · Angular · PrimeNG · Stripe · MySQL | Full-stack architecture, API, data model, workflows |
@@ -82,11 +82,11 @@ React Native · Flutter · Capacitor · Xcode · Android Studio
 Laravel · NestJS · Node.js · Python · PHP · Java · Spring Boot · C++
 
 **APIs & integrations**  
-REST · webhooks · queues and workers · background jobs · scheduled jobs · cron ·
+REST · webhooks · queues and workers · BullMQ · background jobs · scheduled jobs · cron ·
 third-party service orchestration · OpenAPI Company · Apify
 
 **Data**  
-PostgreSQL · MySQL · MariaDB · MongoDB · SQLite · Supabase · Prisma · Eloquent ·
+PostgreSQL · Redis · MySQL · MariaDB · MongoDB · SQLite · Supabase · Prisma · Eloquent ·
 SQL · JSON · XML · YAML
 
 **Infrastructure & delivery**  
