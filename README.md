@@ -52,37 +52,79 @@ business conversation and end as a deployed, monitored, access-controlled module
 
 ---
 
-## Engineering domains
+## Engineering toolkit
 
-**AI & machine learning**  
-*Agentic systems* — AI agents · multi-agent orchestration · LangChain · prompt and context engineering  
-*Retrieval & knowledge* — RAG pipelines · LLM Wiki · embeddings (BGE-M3, Gemini) · vector databases · hybrid retrieval  
-*Models & training* — LoRA / QLoRA fine-tuning · Unsloth · PyTorch · Hugging Face · ML forecasting · predictive analytics
+Technologies, frameworks and tools used across professional and personal projects.
+Grouped by what they are for, not ranked by level — the depth is in the systems
+above, which you can open and read.
 
-**Backend & APIs**  
-Laravel · NestJS · Node.js · Python · PHP · Java · Spring Boot · C++ · REST · webhooks ·
-queues and workers · background jobs
+### AI & machine learning
+
+Core area. What the AI systems above are built out of.
+
+**Agentic systems**  
+AI agents · multi-agent orchestration · LangChain · LLM Wiki · prompt engineering · context engineering
+
+**Retrieval & knowledge**  
+RAG pipelines · embeddings (BGE-M3, Gemini) · vector databases · hybrid retrieval
+
+**Models & training**  
+LoRA / QLoRA fine-tuning · Unsloth · PyTorch · Hugging Face · OpenAI · Mistral · ML forecasting · predictive analytics
+
+### Software engineering
+
+Core area. Frontend, backend, data and infrastructure — the whole column, which is
+why a feature can start as a business conversation and end as a deployed module.
 
 **Frontend & mobile**  
-React · Next.js · Angular · TypeScript · JavaScript · React Native · Flutter · Capacitor · Tailwind · PrimeNG
+React · Next.js · Angular · TypeScript · JavaScript · HTML · CSS · Tailwind · PrimeNG ·
+React Native · Flutter · Capacitor · Xcode · Android Studio
+
+**Backend & application**  
+Laravel · NestJS · Node.js · Python · PHP · Java · Spring Boot · C++
+
+**APIs & integrations**  
+REST · webhooks · queues and workers · background jobs · scheduled jobs · cron ·
+third-party service orchestration
 
 **Data**  
-PostgreSQL · MySQL · MariaDB · Supabase · MongoDB · SQLite · Prisma · Eloquent
-
-**Automation & integration**  
-n8n · API and webhook integrations · scheduled jobs · third-party service orchestration
+PostgreSQL · MySQL · MariaDB · Supabase · MongoDB · SQLite · Prisma · Eloquent ·
+SQL · JSON · XML · YAML
 
 **Infrastructure & delivery**  
-Linux · SSH · WHM/cPanel · Docker · Kubernetes · Git · Jenkins · OpenShift ·
-multi-environment deploy · SSL · cron · backups · server migrations
+Linux · SSH · WHM/cPanel · Docker · Kubernetes · Git · GitHub · Jenkins · OpenShift ·
+multi-environment deploy · SSL · backups · server migrations
 
 **Security & practices**  
 Role-based access control · row-level security · audit trails · secrets handling ·
 environment separation · automated testing · code review · technical documentation
 
-<sub>AI-assisted development is part of the workflow, not a substitute for it:
-Claude Code, Cursor, Codex and Antigravity, governed by the control plane in
-<a href="https://github.com/francescoveryra-dot/iaf-agent-os-showcase">IAF Agent OS</a>.</sub>
+### AI-assisted engineering
+
+How the work gets done, not who does it. Coding agents and automation run inside
+architecture, implementation, review, testing and delivery — the decisions, the
+reviews and the code stay mine.
+
+Claude Code · Cursor · Codex · Google Antigravity · n8n · workflow automation, governed by the
+control plane in <a href="https://github.com/francescoveryra-dot/iaf-agent-os-showcase">IAF Agent OS</a>
+
+### Additional platforms & tools
+
+Alongside the engineering profile, not part of its center: used in production
+running Nexus Trade and client work.
+
+**Commerce & payments**  
+Shopify · WordPress · Magento · PrestaShop · Stripe · PayPal · Klarna · RevenueCat
+
+**Growth & analytics**  
+GA4 · CRO · Meta Ads · Google Ads · TikTok Ads · LinkedIn Ads · Klaviyo (email & SMS)
+
+**Content & creative AI**  
+Canva · CapCut · HeyGen · Higgsfield · Rask.ai · ElevenLabs
+
+**Cross-functional**  
+Requirements and feasibility analysis · client and stakeholder communication ·
+technical-functional documentation · priority management · project coordination
 
 ---
 
