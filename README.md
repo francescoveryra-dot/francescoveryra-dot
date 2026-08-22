@@ -38,6 +38,7 @@ repositories document architecture, decisions and product work.
 
 | System | What it is | Stack | Role |
 |---|---|---|---|
+| **[DeepScout](https://github.com/francescoveryra-dot/deepscout)** · [live](https://deep-scout-plum.vercel.app) | Open-source agentic research: planner DAG, evidence graph, hybrid RAG, cited reports, evaluations | Python · FastAPI · Next.js · PostgreSQL/pgvector · LangChain · LangGraph · Tavily | Personal project — architecture, orchestrator, retrieval, hosted MODE B |
 | **[AI Operations Hub](https://github.com/francescoveryra-dot/ai-operations-hub-showcase)** | Production B2B operations platform combining company acquisition, source-aware enrichment, operational CRM and AI voice operations | React · TypeScript · NestJS · PostgreSQL · Redis · BullMQ · ElevenLabs Agents · Apify · OpenAPI Company · REST APIs · Webhooks · Docker | Architecture, prospecting, provenance, voice, adapters |
 | **[OptiBuild](https://github.com/francescoveryra-dot/optibuild-showcase)** | Construction-site platform that turns 500+ page quantity surveys into structured, costed work | Laravel · React · Capacitor · Python · relational data layer | Architecture, data layer, AI parsing, modules |
 | **[AI Retail Operations](https://github.com/francescoveryra-dot/ai-retail-operations-showcase)** | Food, retail and logistics platform with an AI assistant that performs real operations | React · TypeScript · Supabase · PostgreSQL · Capacitor | Modules, logistics, AI and forecasting layer |
