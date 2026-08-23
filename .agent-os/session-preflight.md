@@ -2,7 +2,7 @@
 
 ## Session — profile banners legible at phone and tablet width
 
-- Repository: `/Users/kekkoiaf/Dev/github-public/francescoveryra-dot`
+- Repository: `francescoveryra-dot/francescoveryra-dot`
 - Branch: `main`
 - Remote: `git@github.com:francescoveryra-dot/francescoveryra-dot.git`
 - Task classification: frontend/visual asset bugfix — README SVG banners
